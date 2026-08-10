@@ -1310,6 +1310,8 @@ testBackend();
 
     console.log("PIN Backend:", data);
 
+    localStorage.setItem("werkstattflow_token", data.token);
+
     return data;
 }
   verifyBackendPin(
