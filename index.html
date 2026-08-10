@@ -1340,6 +1340,8 @@ testBackend();
 
     const mappedOrders = data.map(mapBackendOrder);
 
+    orders = mappedOrders;
+
 console.log("Gemappte Aufträge:", mappedOrders);
 
 return mappedOrders;
@@ -2188,7 +2190,7 @@ function defaultQC(){
   ];
 }
 
-const orders = [
+let orders = [
   {
     id:'10072', vehicle:'BMW 320d', plate:'AB · CD 123', customer:'Max Mustermann',
     km:'125.430 km', erst:'05.05.2019', status:'arbeit', progress:60,
