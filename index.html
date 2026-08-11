@@ -1395,12 +1395,17 @@ return mappedOrders;
     id: t.id,
     title: t.title,
     category: t.category,
-    description: t.description,
-    duration: `${t.duration_min || 0} min`,
-    status: t.status,
-    progress: t.progress || 0,
-    time: t.status === 'done' ? 'Erledigt' : (t.status === 'progress' ? 'In Arbeit' : 'Ausstehend')
-}))
+   desc: t.description || '',
+duration: `${t.duration_min || 0} min`,
+status: t.status,
+statusLabel: t.status === 'done'
+    ? 'Erledigt'
+    : (t.status === 'progress' ? 'In Arbeit' : 'Ausstehend'),
+progress: t.progress || 0,
+time: t.status === 'done'
+    ? 'Erledigt'
+    : (t.status === 'progress' ? 'In Arbeit' : 'Ausstehend')
+   }))
     };
 }
 
