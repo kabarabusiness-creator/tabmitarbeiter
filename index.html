@@ -1384,7 +1384,7 @@ return mappedOrders;
         eta: '',
         created: o.created_at || '',
         qc: defaultQC(),
-        image: o.image_url || '',
+        image: o.vehicleDetails?.image_url || o.image_url || '',
         farbe: '',
         motor: '',
         kraftstoff: '',
