@@ -1338,8 +1338,27 @@ testBackend();
 
     console.log("Aufträge Backend:", data);
 
-    const mappedOrders = data.map(mapBackendOrder);
+    const detailedOrders = await Promise.all(
+    data.map(async (o) => {
+        const detailResponse = await fetch(`${API_BASE}/orders/${o.id}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        });
 
+        const detail = await detailResponse.json();
+
+        return {
+            ...o,
+            tasks: detail.tasks || [],
+            vehicleDetails: detail.vehicle || {},
+            qc_items: detail.qc_items || []
+        };
+    })
+);
+
+const mappedOrders = detailedOrders.map(mapBackendOrder);
+    
     orders = mappedOrders;
 
     renderWorklistTabs();
